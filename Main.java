@@ -4,10 +4,6 @@ package RobotPackage;
 public class Main {
 
 	public static void main(String[] args) {
-		
-
-		// your program code goes here
-
 		CargaDatos testMatriz = new CargaDatos();
 
 		EscaladaSimple testRobot = new EscaladaSimple(testMatriz.devolverMatriz(), testMatriz.getMonedasObjetivo());
