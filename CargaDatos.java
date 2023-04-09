@@ -16,7 +16,7 @@ public class CargaDatos {
 	}
 	
 	
-	public int CargarMatrizDeFichero()
+	private int CargarMatrizDeFichero()
 	{
 		System.out.println("\u001B[1m_______________________________");
 		System.out.println();
@@ -53,12 +53,8 @@ public class CargaDatos {
 		return monedasObjetivo;
 	}
 	
-	public int[][] devolverMatriz(){
+	public int[][] getMatriz(){
 		return matriz;
-	}
-
-	public void setMonedasObjetivo(int monedasObjetivo) {
-		this.monedasObjetivo = monedasObjetivo;
 	}
 	
 	public int getMonedasObjetivo() {
@@ -66,8 +62,8 @@ public class CargaDatos {
 	}
 
 	
-	//metodo test para imprimir la matriz con numeros enteros
-	public void imprimirMatriz() {
+	//metodo test para imprimir la matriz inicial con numeros enteros
+	public void imprimirMatrizNumeros() {
 		System.out.println();
 		System.out.println("Esta es la matriz leida:");
 		for(int i = 0; i < 10; i++) {
