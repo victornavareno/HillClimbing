@@ -6,8 +6,8 @@ public class Main {
 	public static void main(String[] args) {
 		CargaDatos testMatriz = new CargaDatos();
 
-		EscaladaSimple testRobot = new EscaladaSimple(testMatriz.devolverMatriz(), testMatriz.getMonedasObjetivo());
-		EscaladaMaximaPendiente testRobot2 = new EscaladaMaximaPendiente(testMatriz.devolverMatriz(), testMatriz.getMonedasObjetivo());
+		EscaladaSimple testRobot = new EscaladaSimple(testMatriz.getMatriz(), testMatriz.getMonedasObjetivo());
+		EscaladaMaximaPendiente testRobot2 = new EscaladaMaximaPendiente(testMatriz.getMatriz(), testMatriz.getMonedasObjetivo());
 
 		//testMatriz.imprimirMatriz();
 		System.out.println();
