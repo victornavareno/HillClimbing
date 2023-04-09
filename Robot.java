@@ -2,6 +2,8 @@ package RobotPackage;
 
 import java.util.*;
 
+/*This is the superclass that should be used to construct a hill climbing solution, adding your own 
+heuristic search variation on one of the search algortithms*/
 public abstract class Robot {
 
 	protected int objetivoMonedas; // monedas a conseguir para salir del laberinto
