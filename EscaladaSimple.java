@@ -4,8 +4,6 @@ import java.util.*;
 
 public class EscaladaSimple extends Robot{
 
-
-	//los parametros laberinto y objetivoMonedas se leeran en el fichero proporcionado
 	public EscaladaSimple(int[][] matrizLaberinto, int _objetivoMonedas) {
 		super(matrizLaberinto, _objetivoMonedas);
 	}
@@ -18,9 +16,9 @@ public class EscaladaSimple extends Robot{
 		List<int[]> direccion = getListaMovimientosDisponibles();
 
 		while((direccion.size() > 0) && !encontrado) {
-			int random = rand.nextInt(direccion.size()); // genero un numero aleatorio entre entre 0 y numero de nodos a explorar desde este estado (tamaño del Array)
 			this.nodosGenerados++; // estamos generando otro nodo de nuestro arbol de exploracion
-
+			int random = rand.nextInt(direccion.size()); // genero un numero aleatorio entre entre 0 y numero de nodos a explorar desde este estado (tamaño del Array)
+			
 			int posX = posicionRobot[0] + direccion.get(random)[0];
 			int posY = posicionRobot[1] + direccion.get(random)[1];
 
