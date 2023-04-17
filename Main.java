@@ -4,26 +4,28 @@ package RobotPackage;
 public class Main {
 
 	public static void main(String[] args) {
-		CargaDatos testMatriz = new CargaDatos();
+		CargaDatos laberinto = new CargaDatos();
+		EscaladaSimple EscaladaSimple = new EscaladaSimple(laberinto.getMatriz(), laberinto.getMonedasObjetivo());
+		EscaladaMaximaPendiente EscaladaMaximaPendiente = new EscaladaMaximaPendiente(laberinto.getMatriz(), laberinto.getMonedasObjetivo());
 
-		EscaladaSimple testRobot = new EscaladaSimple(testMatriz.getMatriz(), testMatriz.getMonedasObjetivo());
-		EscaladaMaximaPendiente testRobot2 = new EscaladaMaximaPendiente(testMatriz.getMatriz(), testMatriz.getMonedasObjetivo());
-
-		//testMatriz.imprimirMatriz();
 		System.out.println();
 		double duracionAlgoritmo;
-
+		
+		// EN LA CLASE Config.java, MODIFICAR PARAMETROS PARA ELEGIR ESTRATEGIA DE RESOLUCION
 		if(Config.modoResolucion == 0) {
-			duracionAlgoritmo = testRobot.encontrarSolucion();
-			System.out.println(" MÉTODO UTILIZADO: ESCALADA SIMPLE");
+			duracionAlgoritmo = EscaladaSimple.encontrarSolucion();
+			System.out.println("\u001B[1m    METODO UTILIZADO: ESCALADA SIMPLE");
 		}
 
 		if(Config.modoResolucion == 1) {
-			duracionAlgoritmo = testRobot2.encontrarSolucion();	
-			System.out.println("\u001B[1m MÉTODO UTILIZADO: ESCALADA MÁXIMA PENDIENTE");
+			System.out.println();
+
+			duracionAlgoritmo = EscaladaMaximaPendiente.encontrarSolucion();	
+			
+			System.out.println("\u001B[1m METODO UTILIZADO: ESCALADA MAXIMA PENDIENTE");
 		}
 
 		 
-	     System.out.println("  Tiempo de ejecución: " + duracionAlgoritmo + " segundos");
+	     System.out.println("   Tiempo de ejecucion: " + duracionAlgoritmo + " segundos");
 	}
 }
