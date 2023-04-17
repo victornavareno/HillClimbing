@@ -8,13 +8,12 @@ import java.io.*;
  * he elegido Short como tipo de dato almacenado al ser más eficiente y rápido que almacenar Int
  */
 public class CargaDatos {
-	private int[][] matriz = new int[10][10]; // la matriz SIEMPRE será de 10x10
+	private int[][] matriz = new int[10][10]; // la matriz SIEMPRE será de 10x10 en esta versión base
 	private int monedasObjetivo;
 	
 	public CargaDatos() {
 		this.monedasObjetivo= CargarMatrizDeFichero();
 	}
-	
 	
 	private int CargarMatrizDeFichero()
 	{
@@ -39,7 +38,7 @@ public class CargaDatos {
 			while(scanner.hasNextLine()) {
 				for(int i = 0 ; i < 10; i++) {
 					String[] numeros = linea.split(","); // almaceno los valores en un array de string[]
-					matriz[numLinea][i] = (int)Short.valueOf(numeros[i]); // casting de String a short
+					matriz[numLinea][i] = (int)Short.valueOf(numeros[i]); // casting de String a int
 				}
 				linea = scanner.nextLine();
 				numLinea++;
@@ -66,8 +65,9 @@ public class CargaDatos {
 	public void imprimirMatrizNumeros() {
 		System.out.println();
 		System.out.println("Esta es la matriz leida:");
+		System.out.println();
 		for(int i = 0; i < 10; i++) {
-			System.out.print(" ");
+			System.out.print("     ");
 			for (int j = 0; j < 10; j++) {
 				System.out.print(matriz[i][j] + " ");
 			}
