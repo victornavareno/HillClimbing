@@ -4,8 +4,6 @@ import java.util.*;
 
 public class EscaladaMaximaPendiente extends Robot {
 
-
-	//los parametros laberinto y objetivoMonedas se leeran en el fichero proporcionado
 	public EscaladaMaximaPendiente(int[][] matrizLaberinto, int _objetivoMonedas) {
 		super(matrizLaberinto, _objetivoMonedas);
 	}
@@ -13,11 +11,11 @@ public class EscaladaMaximaPendiente extends Robot {
 	@Override
 	public void buscarMonedas() {
 		List<int[]> direccion = getListaMovimientosDisponibles();
-
 		int indiceMejorOpcion = 0;
-
 		int valorMejorOpcion = 0;
-		int posiX = 0;
+		
+		// guardan las coordenadas de la mejor opcion:
+		int posiX = 0; 
 		int posiY = 0;
 
 		for(int i = 0; i < direccion.size(); i++) {
@@ -44,7 +42,7 @@ public class EscaladaMaximaPendiente extends Robot {
 		this.monedasConseguidas += valorMejorOpcion; // le sumo las monedas de la mejor opcion posible
 		estadoActual[posiX][posiY] = 8; // muevo el robot
 		encontrarRobot(); // actualizo la posicion del robot
-		traducirMovimiento(direccion.get(indiceMejorOpcion)[0], direccion.get(indiceMejorOpcion)[1]);
+		traducirMovimiento(direccion.get(indiceMejorOpcion)[0], direccion.get(indiceMejorOpcion)[1]); // añado el movimiento a nuestro vector solucion
 	}
 
 }
