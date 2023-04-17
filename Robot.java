@@ -2,8 +2,6 @@ package RobotPackage;
 
 import java.util.*;
 
-/*This is the superclass that should be used to construct a hill climbing solution, adding your own 
-heuristic search variation on one of the search algortithms*/
 public abstract class Robot {
 
 	protected int objetivoMonedas; // monedas a conseguir para salir del laberinto
@@ -12,11 +10,11 @@ public abstract class Robot {
 	protected boolean haySolucion; 
 
 	protected int[][] estadoActual; // nuestra matriz - laberinto
-	protected int[] posicionRobot; // array 2 elementos, pos[0] = coordenada X del robot, pos[1] = coordenada Y del robot
+	protected int[] posicionRobot;  // array 2 elementos, pos[0] = coordenada X del robot, pos[1] = coordenada Y del robot
 	protected List<String> solucion;
 
 
-	//los parametros laberinto y objetivoMonedas se leeran en el fichero proporcionado
+	//los parametros matrizLaberinto y objetivoMonedas se leeran en el fichero proporcionado
 	public Robot(int[][] matrizLaberinto, int _objetivoMonedas) {
 		this.estadoActual = matrizLaberinto;
 		this.objetivoMonedas = _objetivoMonedas;
@@ -39,8 +37,10 @@ public abstract class Robot {
 		}
 	}
 
+	//Deberán implementarlo las subclases con metodos de resolucion diferentes
 	public abstract void buscarMonedas();
 
+	// Implementamos escalada simple para buscar la salida, ya que es la mejor estrategia en este caso
 	protected boolean buscarSalida() {
 		Random rand = new Random();
 
@@ -124,7 +124,7 @@ public abstract class Robot {
 		}
 	}
 
-	// Imprime el estado actual - el laberinto en esta situacion
+	// Imprime el estado actual - el laberinto en esta instante
 	protected void imprimirMatriz()
 	{
 		for(int i = 0; i < 10; i++) {
@@ -154,6 +154,7 @@ public abstract class Robot {
 		System.out.println();
 	}
 
+	// Imprime la solución - la secuencia de movimientos que realiza el robot para salir del laberinto con las monedas
 	protected void imprimirSolucion() {
 		System.out.println("   LOS MOVIMIENTOS SOLUCION SON: ");
 		int saltoLinea = 0;
@@ -174,9 +175,9 @@ public abstract class Robot {
 		System.out.println();
 	}
 
-	// Metodo que articula la estrategia de escalada simple
+	// Metodo que articula la estrategia implementada en las subclases
 	protected double encontrarSolucion() {
-		long startTime = System.nanoTime();
+		long startTime = System.nanoTime(); // para medir el tiempo del algoritmo empleado
 
 		System.out.println("      LABERINTO INICIAL:");
 		imprimirMatriz();
@@ -202,12 +203,13 @@ public abstract class Robot {
 			System.out.println();
 		}
 
+		// Para medir el tiempo empleado por el algoritmo:
 		long endTime = System.nanoTime();
-		long duration = (endTime - startTime);  // in nanoseconds
-		double seconds = (double) duration / 1_000_000_000.0; // convert to seconds
-		double roundedDuration = Math.round(seconds * 10000.0) / 10000.0; // round to 3 decimal places
+		long duracion = (endTime - startTime);  // calculado en nanosegundos
+		double segundos = (double) duracion / 1_000_000_000.0; // convertimos a segundos
+		double tiempoRedondeado = Math.round(segundos * 10000.0) / 10000.0; // redondeamos los segundos a 4 decimales
 
-		
-		return roundedDuration;
+
+		return tiempoRedondeado;
 	}
 }
