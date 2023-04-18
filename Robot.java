@@ -2,6 +2,8 @@ package RobotPackage;
 
 import java.util.*;
 
+//AUTOR:    VICTOR ANDRES NAVAREÑO MOZA
+//PROYECTO: LABECOIN, INTELIGENCIA ARTIFICIAL Y SISTEMAS INTELIGENTES
 public abstract class Robot {
 
 	protected int objetivoMonedas; // monedas a conseguir para salir del laberinto
@@ -143,9 +145,10 @@ public abstract class Robot {
 				else if(estadoActual[i][j] == 7) { // SALIDA - IMPRIMO UN CIRCULO ROJO PARA INDICAR LA SALIDA DEL LABERINTO 
 					System.out.print("\033[1;31m" + "\u25CF" + " \033[0m");
 				}
-				else if(estadoActual[i][j] == 0) { // NO IMPRIMO LAS CASILLAS 0
+				else if(estadoActual[i][j] <= 0) { // NO IMPRIMO LAS CASILLAS 0
 					System.out.print("  ");
 				}
+
 
 				else System.out.print("\u25A0" + " "); // IMPRIMO UN CUADRADO BLANCO PARA LOS MUROS (CUIDADO CON TENER FONDO BLANCO EN EL IDE!!!)
 			}
@@ -181,14 +184,14 @@ public abstract class Robot {
 
 		System.out.println("      LABERINTO INICIAL:");
 		imprimirMatriz();
-		while((monedasConseguidas < objetivoMonedas) && haySolucion) {
+		while((this.monedasConseguidas < this.objetivoMonedas) && this.haySolucion && (this.nodosGenerados < Config.limiteNodosGenerados)) {
 			buscarMonedas();
 		}
 
 		while(!buscarSalida() && (this.nodosGenerados < Config.limiteNodosGenerados));
 		System.out.println();
 
-		if(this.nodosGenerados >= Config.limiteNodosGenerados) {
+		if((this.nodosGenerados >= Config.limiteNodosGenerados) || (this.haySolucion==false)) {
 
 			System.out.println("\033[1;31m NO HEMOS ENCONTRADO UNA SOLUCION GENERANDO " + nodosGenerados + " NODOS\033[0m");
 			System.out.println("     Pruebe a aumentar el limite de nodos generados");
